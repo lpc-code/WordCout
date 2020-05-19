@@ -1,52 +1,51 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-//×Ö·ûÊıÍ³¼Æ
-//ÌâÄ¿ÒªÇó£º¿Õ¸ñ£¬Ë®Æ½ÖÆ±í·û£¬»»ĞĞ·û¾ùËã×Ö·û
+//å­—ç¬¦æ•°ç»Ÿè®¡
 int CharacterCount(char *filename)
 {
 	FILE *fp;
 	int count = 0;
 	char ch;
-	if ((fp = fopen(filename, "r")) == NULL)  //¼ì²â´ò¿ª²Ù×÷ÊÇ·ñÓĞ´í
+	if ((fp = fopen(filename, "r")) == NULL)  //æ£€æµ‹æ‰“å¼€æ“ä½œæ˜¯å¦æœ‰é”™
 	{
 		printf("cannot open this file!");
 		exit(0);
 	}
-	ch = fgetc(fp);  			//´ÓÎÄ¼şÖĞ¶ÁÈëÒ»¸ö×Ö·û
-	while (ch != EOF)			//ÎÄ¼ş½áÊø±êÖ¾
+	ch = fgetc(fp);  			//ä»æ–‡ä»¶ä¸­è¯»å…¥ä¸€ä¸ªå­—ç¬¦
+	while (ch != EOF)			//æ–‡ä»¶ç»“æŸæ ‡å¿—
 	{
-		count++;			//×Ö·ûÊıÁ¿¼ÓÒ»
-		ch = fgetc(fp);		//¶ÁÈ¡ÏÂÒ»¸ö×Ö·û
+		count++;			//å­—ç¬¦æ•°é‡åŠ ä¸€
+		ch = fgetc(fp);		//è¯»å–ä¸‹ä¸€ä¸ªå­—ç¬¦
 	}
-	fclose(fp);				//¹Ø±ÕÎÄ¼ş
+	fclose(fp);				//å…³é—­æ–‡ä»¶
 	printf("character number is :%d", count);
 	return 0;
 }
 
-//µ¥´ÊÊıÍ³¼Æ
-//ÌâÄ¿ÒªÇó£ºÓÉ¿Õ¸ñ»ò¶ººÅ·Ö¸î¿ªµÄ¶¼ÊÓÎªµ¥´Ê
+//å•è¯æ•°ç»Ÿè®¡
+//é¢˜ç›®è¦æ±‚ï¼šç”±ç©ºæ ¼æˆ–é€—å·åˆ†å‰²å¼€çš„éƒ½è§†ä¸ºå•è¯
 int WordCount(char *filename)
 {
 	FILE *fp;
 	int count = 0;
 	char ch;
-	if ((fp = fopen(filename, "r")) == NULL)	 //¼ì²â´ò¿ª²Ù×÷ÊÇ·ñÓĞ´í
+	if ((fp = fopen(filename, "r")) == NULL)	 //æ£€æµ‹æ‰“å¼€æ“ä½œæ˜¯å¦æœ‰é”™
 	{
 		printf("cannot open this file!");
 		exit(0);
 	}
-	ch = fgetc(fp);			//´ÓÎÄ¼şÖĞ¶ÁÈëÒ»¸ö×Ö·û
+	ch = fgetc(fp);			//ä»æ–‡ä»¶ä¸­è¯»å…¥ä¸€ä¸ªå­—ç¬¦
 	while(ch != EOF)			
 	{
 		
-		if(ch == ','||ch == ' ')	//µ¥´ÊÒÔ¿Õ¸ñ»ò¶ººÅ·Ö¸ô
+		if(ch == ','||ch == ' ')	//å•è¯ä»¥ç©ºæ ¼æˆ–é€—å·åˆ†éš”
 		{
 			count ++;
 		}
-		ch = fgetc(fp);		//¶ÁÈ¡ÏÂÒ»¸ö×Ö·û
+		ch = fgetc(fp);		//è¯»å–ä¸‹ä¸€ä¸ªå­—ç¬¦
 	}
-	count +=1;			//µ¥´ÊÒÔ¿Õ¸ñ»ò¶ººÅ·Ö¸ô£¬¼´µ¥´ÊÊıÎª¿Õ¸ñºÍ¶ººÅÊıÁ¿+1
+	count +=1;			//å•è¯ä»¥ç©ºæ ¼æˆ–é€—å·åˆ†éš”ï¼Œå³å•è¯æ•°ä¸ºç©ºæ ¼å’Œé€—å·æ•°é‡+1
 	fclose(fp);
 	printf("Word count is :%d",count);
 	return 0;
@@ -55,11 +54,11 @@ int main(int argc, char *argv[])
 {
 	
 	int num = 0;
-	if (strcmp(argv[1], "-c") == 0)		//Í³¼Æ×Ö·ûÊı
+	if (strcmp(argv[1], "-c") == 0)		//ç»Ÿè®¡å­—ç¬¦æ•°
 	{
 		CharacterCount(argv[2]);
 	}
-	if (strcmp(argv[1], "-w") == 0)	//Í³¼Æµ¥´ÊÊı
+	if (strcmp(argv[1], "-w") == 0)	//ç»Ÿè®¡å•è¯æ•°
 	{
 		WordCount(argv[2]);	
 	}
