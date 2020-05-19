@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 //字符数统计
-
+//题目要求：空格，水平制表符，换行符均算字符
 int CharacterCount(char *filename)
 {
 	FILE *fp;
